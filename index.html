@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RAREBYTE</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="stars"></div><div class="floor"></div></div>
+<header><div class="bar">
+<a class="logo" href="#home">RAREBYTE</a>
+<nav aria-label="Main"><a href="#home" data-v="home">HOME</a><a href="#play" data-v="play">PLAY</a><a href="#leaderboard" data-v="leaderboard">LEADERBOARD</a><a href="#archives" data-v="archives">ARCHIVES</a><a href="#profile" data-v="profile">PROFILE</a><a href="#how" data-v="how">HOW TO PLAY</a></nav>
+<div class="tools"><button class="btn ghost" id="snd" type="button" aria-pressed="true">SOUND ON</button><a class="btn ghost" href="#login" id="loginBtn">LOGIN</a></div>
+</div></header>
+<main>
+
+<section class="view" id="v-home" hidden>
+<div class="hero">
+<div class="blink">INSERT A COIN TO CONTINUE</div>
+<h1 style="margin-top:14px">THINK DIFFERENT.<br><span class="y">SCORE HIGHER.</span></h1>
+<p class="sub">Every answer has a value. How rare is yours?</p>
+<div class="cta"><a class="btn big" id="playBtn" href="#play">PLAY TODAY'S CHALLENGE</a>
+<div><div class="dim" style="font-size:18px">NEXT CHALLENGE IN</div><div class="count" id="cd">--:--:--</div></div></div>
+</div>
+<div class="grid g3" style="margin-bottom:16px">
+<div class="stat"><span>PLAYERS TODAY</span><b id="hPlayers">18,420</b></div>
+<div class="stat"><span>ANSWERS SUBMITTED</span><b id="hAns">64,310</b></div>
+<div class="stat"><span>CHALLENGE</span><b id="hNum">#326</b></div>
+</div>
+<div class="grid g2">
+<div class="panel"><h2>TOP 5 TODAY</h2><div class="tw"><table id="hLb"></table></div><p class="note" style="margin-top:10px">Sample leaderboard for this demo.</p><a class="btn ghost" href="#leaderboard">FULL LEADERBOARD</a></div>
+<div class="panel"><h2>DAILY STREAK</h2><div class="pips" id="hPips"></div><p id="hStreak"></p><p class="note">Finish each daily challenge to keep your streak alive.</p></div>
+</div>
+</section>
+
+<section class="view" id="v-play" hidden>
+<div class="panel">
+<div class="hud"><span id="pMode">DAILY #326</span><span>Q <b id="pQn">1</b>/7</span><span>SCORE <b id="pSc">0</b></span><span><b id="pT">25</b>s</span></div>
+<div class="timer" id="pBar"><i></i></div>
+<h2 class="q" id="pQ" style="color:var(--fg)"></h2>
+<form class="ans" id="pForm"<p class="note" id="pHint"></p> autocomplete="off"><input id="pIn" type="text" maxlength="40" placeholder="TYPE YOUR ANSWER" aria-label="Your answer"><button class="btn" id="pGo" type="submit">LOCK IT IN</button></form>
+<div class="rev" id="pRev" hidden>
+<span class="tier" id="rTier"></span>
+<div class="pts" id="rPts"></div>
+<p id="rTxt" style="margin-top:10px"></p>
+<div class="meter"><i id="rMeter"></i></div>
+<button class="btn alt" id="pNext" type="button">NEXT</button>
+</div>
+</div>
+<p class="note" style="margin-top:14px">Rarity stays hidden until you answer. One answer per question, 25 seconds each.</p>
+</section>
+
+<section class="view" id="v-results" hidden>
+<div class="panel" style="text-align:center">
+<div class="blink">CHALLENGE COMPLETE!</div>
+<h2 style="margin-top:12px">DAILY ARCADE RESULTS</h2>
+<div class="score" id="sTot">0 PTS</div>
+<div class="y" id="sBest" style="font:10px var(--px)"></div>
+<div class="grid g3" style="margin:22px 0;text-align:left">
+<div class="stat"><span>CORRECT ANSWERS</span><b id="sCor"></b></div>
+<div class="stat"><span>GLOBAL RANK</span><b id="sRank"></b></div>
+<div class="stat"><span>RAREST ANSWER</span><b id="sRare"></b></div>
+<div class="stat"><span>PERSONAL BEST</span><b id="sPB"></b></div>
+<div class="stat"><span>CURRENT STREAK</span><b id="sStr"></b></div>
+<div class="stat"><span>RANK TITLE</span><b id="sTitle" style="font-size:11px"></b></div>
+</div>
+<div class="tw" style="text-align:left"><table id="sTable"></table></div>
+<div class="cta" style="justify-content:center"><button class="btn" id="shareBtn" type="button">SHARE RESULTS</button><a class="btn alt" href="#leaderboard">LEADERBOARD</a></div>
+<p class="note" id="shareMsg"></p>
+<p class="note">Keep playing to climb the leaderboard. Rarity here is simulated from a sample field of players.</p>
+</div>
+</section>
+
+<section class="view" id="v-leaderboard" hidden>
+<h1>LEADERBOARD</h1>
+<div class="tabs" role="tablist"><button class="tab on" data-b="daily" type="button">DAILY</button><button class="tab" data-b="weekly" type="button">WEEKLY</button><button class="tab" data-b="all" type="button">ALL-TIME</button></div>
+<div class="panel"><div class="tw"><table id="lbT"></table></div></div>
+<p class="note" style="margin-top:12px">Demo boards with sample players. Your row is highlighted once you play.</p>
+</section>
+
+<section class="view" id="v-archives" hidden>
+<h1>CHALLENGE ARCHIVES</h1>
+<p class="dim">Replay earlier challenges for practice. Archive runs do not change your streak or ranking.</p>
+<div class="grid g2" id="arcList"></div>
+</section>
+
+<section class="view" id="v-profile" hidden>
+<div class="panel"><div class="who" style="gap:18px;flex-wrap:wrap"><img class="av l" id="prAv" alt="Your pixel avatar"><div><h1 id="prName" style="margin:0 0 6px"></h1><div class="note" id="prNote"></div></div></div></div>
+<div class="grid g3" style="margin:16px 0" id="prStats"></div>
+<h2>ACHIEVEMENTS</h2>
+<div class="grid g2" id="prAch"></div>
+</section>
+
+<section class="view" id="v-how" hidden>
+<h1>HOW TO PLAY</h1>
+<div class="grid g2">
+<div class="panel"><h2>THE GAME</h2><p>Every question has many correct answers. The fewer players who give your answer, the more points it earns.</p><p>Everyone gets the same 7 questions each day. You have 25 seconds for each and one answer per question.</p><p>Wrong answers score zero. The rarity of an answer stays hidden until you lock yours in.</p></div>
+<div class="panel"><h2>SCORING</h2><div class="rows"><div class="row"><span>Very common (10%+ of players)</span><b class="y">10</b></div><div class="row"><span>Common (4-10%)</span><b class="y">25</b></div><div class="row"><span>Uncommon (1.5-4%)</span><b class="y">50</b></div><div class="row"><span>Rare (0.5-1.5%)</span><b class="y">100</b></div><div class="row"><span>Extremely rare (under 0.5%)</span><b class="y">200</b></div></div><p class="note" style="margin-top:10px">Tiers come from how often each answer is given. In this demo the field is simulated.</p></div>
+</div>
+<div class="cta"><a class="btn big" href="#play">PLAY NOW</a></div>
+</section>
+
+<section class="view" id="v-login" hidden>
+<div class="panel" style="max-width:460px"><h1>LOGIN / REGISTER</h1>
+<form id="lgForm"><label for="lgName">USERNAME</label><input id="lgName" maxlength="16" required placeholder="PLAYER_ONE"><label for="lgPass">PASSWORD</label><input id="lgPass" type="password" autocomplete="new-password" placeholder="DEMO ONLY"><div class="cta"><button class="btn" type="submit">START NEW PROFILE</button></div></form>
+<p class="note">Demo only. Nothing is sent anywhere. Your profile is saved in this browser. A real build would use Supabase auth.</p></div>
+</section>
+
+</main>
+<script src="utils.js"></script>
+<script src="data.js"></script>
+<script src="storage.js"></script>
+<script src="audio.js"></script>
+<script src="art.js"></script>
+<script src="board.js"></script>
+<script src="game.js"></script>
+<script src="views.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
